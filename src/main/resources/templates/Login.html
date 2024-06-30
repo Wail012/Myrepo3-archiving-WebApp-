@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h2>Login</h2>
+<form action="#" th:action="@{/}" method="post">
+    <div>
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="1">Archiviste</option>
+            <option value="2">Étudiant</option>
+            <option value="3">Administrateur</option>
+            <option value="4">Administrateur</option>
+        </select>
+    </div>
+    <button type="submit">Login</button>
+</form>
+</body>
+</html>
