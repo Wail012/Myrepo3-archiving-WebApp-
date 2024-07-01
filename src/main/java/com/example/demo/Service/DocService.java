@@ -2,7 +2,7 @@ package com.example.demo.Service;
 
 
 import com.example.demo.model.*;
-import com.example.demo.repository.DocEtudRepository;
+import com.example.demo.repository.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -18,16 +18,38 @@ public class DocService {
     private DocEtudRepository docEtudRepository;
 
     @Autowired
-    private DocEtudRepository AdmindocRepository;
+    private AdminDocRepository admindocRepository;
     @Autowired
-    private DocEtudRepository ArchivisteRepository;
+    private ArchivisteRepository archivisteRepository;
     @Autowired
-    private DocEtudRepository AdministratorRepository;
+    private AdministratorRepository administratorRepository;
     @Autowired
-    private DocEtudRepository EtudiantRepository;
+    private EtudiantRepository etudiantRepository;
 
     @PersistenceContext
     private EntityManager entityManager;
+
+
+    private Long loginId;
+
+    private int loginRole;
+
+
+
+    public void setLoggedInUser(Long userId, int role) {
+        this.loginId = userId;
+        this.loginRole = role;
+    }
+
+    public Long getLoginId() {
+        return loginId;
+    }
+
+    public int getLoginRole() {
+        return loginRole;
+    }
+
+
 
 
     public int Login(Long id, String password,int role) {
@@ -44,7 +66,9 @@ public class DocService {
             }
             else
             {
+                setLoggedInUser(id,1);
                 return 1;
+
             }
 
         } else if (role==2) {
@@ -59,6 +83,7 @@ public class DocService {
             }
             else
             {
+                setLoggedInUser(id,2);
                 return 1;
             }
         }
@@ -74,6 +99,7 @@ public class DocService {
             }
             else
             {
+                setLoggedInUser(id,3);
                 return 1;
             }
         }
@@ -88,9 +114,57 @@ public class DocService {
             }
             else
             {
+                setLoggedInUser(id,4);
                 return 1;
             }
         }
       return -1;
+    }
+    public void AddEtud(Etudiant a) {
+       etudiantRepository.save(a);
+
+    }
+    public void AddArchiviste(Archiviste a) {
+        archivisteRepository.save(a);
+
+    }
+    public void AddAdmin(Administrator a) {
+        administratorRepository.save(a);
+
+    }
+    public void AddAdminDoc(AdminDoc a) {
+        admindocRepository.save(a);
+
+    }
+    public void AddEtudDoc(DocEtud a) {
+        docEtudRepository.save(a);
+
+    }
+    public List<Etudiant> listEtud( ) {
+        return etudiantRepository.findAll();
+
+    }
+
+
+
+    public void suppEtud( Long id) {
+        etudiantRepository.deleteById(id);
+
+    }
+    public Optional<Etudiant> findEtudById(Long id) {
+        return etudiantRepository.findById(id);
+
+    }
+    public Optional<AdminDoc> findAdminDocById(Long id) {
+        return admindocRepository.findById(id);
+
+    }
+    public Optional<Administrator> findAdminById(Long id) {
+        return administratorRepository.findById(id);
+
+    }
+    public Optional<Archiviste> findArchivisteById(Long id) {
+        return archivisteRepository.findById(id);
+
     }
 }

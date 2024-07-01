@@ -1,9 +1,9 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 import java.time.LocalDate;
 
 @Entity
@@ -14,16 +14,35 @@ public class AdminDoc {
      Long id;
      String categorie;
      LocalDate dateCreation;
-
+     int accepted;
      String filiere;
      int anneeEtud;
      LocalDate dateSupp;
 
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] file;
+
+    @ManyToOne
+    @JoinColumn(name = "id_administrator")
+    private Administrator admin;
     // Getters and Setters
     public Long getId() {
         return id;
     }
+    public int getAccept() {
+        return accepted;
+    }
+    public void setAccept(int accepted) {
+        this.accepted = accepted;
+    }
+    public byte[] getFile() {
+        return file;
+    }
 
+    public void setFile(byte[] file) {
+        this.file = file;
+    }
     public void setId(Long id) {
         this.id = id;
     }
@@ -58,5 +77,12 @@ public class AdminDoc {
 
     public void setAnneeEtud(int anneeEtud) {
         this.anneeEtud = anneeEtud;
+    }
+    public Administrator getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin (Administrator etudiant) {
+        this.admin = etudiant;
     }
 }

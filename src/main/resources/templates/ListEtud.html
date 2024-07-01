@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des étudiants</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<!-- Inclusion du fragment navbar -->
+<div th:include="AdminDbaNavbar :: navbarDba"></div>
+
+<div class="container mt-4">
+    <h2>Liste des étudiants</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Année d'accès</th>
+            <th>Filière</th>
+            <th>Niveau d'accès année</th>
+            <th>Niveau d'accès filière</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="etudiant : ${etudiants}">
+            <td th:text="${etudiant.id}"></td>
+            <td th:text="${etudiant.nom}"></td>
+            <td th:text="${etudiant.prenom}"></td>
+            <td th:text="${etudiant.email}"></td>
+            <td th:text="${etudiant.anneeAccess}"></td>
+            <td th:text="${etudiant.filiere}"></td>
+            <td th:text="${etudiant.accessLevelAnnee}"></td>
+            <td th:text="${etudiant.accessLevelFiliere}"></td>
+            <td>
+                <a class="btn btn-primary btn-sm" th:href="@{'/modifetud/' + ${etudiant.id}}">Modifier</a>
+                <a class="btn btn-danger btn-sm" th:href="@{'/suppetud/' + ${etudiant.id}}">Supprimer</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+ayQ9FkWiw23Fd4pG9dUFMgJL4iz/HnNpFVUJLnF4YED6sk"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy2F6BHv5vhoN0pZ4P9Pi9E9RV8oflAvcJ"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -2,22 +2,35 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Accueil</title>
+    <title>Ajouter Administrateur</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
 </head>
 <body>
+<!-- Inclusion du fragment navbar -->
 <div th:include="AdminDbaNavbar :: navbarDba"></div>
 
 <div class="container mt-4">
-    <div class="jumbotron">
-        <h1 class="display-4">Bienvenue, Administrateur DBA!</h1>
-        <p class="lead">Vous êtes connecté à l'application en tant qu'administrateur de base de données.</p>
-        <hr class="my-4">
-        <p>Cette page d'accueil est un exemple pour illustrer Thymeleaf avec Bootstrap.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">En savoir plus</a>
-    </div>
+    <h2>Ajouter Administrateur</h2>
+    <form th:action="@{/ajoutadmin}" method="post">
+        <div class="form-group">
+            <label for="nom">Nom:</label>
+            <input type="text" class="form-control" id="nom" name="nom" required>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom:</label>
+            <input type="text" class="form-control" id="prenom" name="prenom" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

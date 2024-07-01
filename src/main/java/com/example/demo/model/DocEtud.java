@@ -16,12 +16,26 @@ public class DocEtud {
     private int anneeRealisation;
     private String intitule;
     private LocalDate DateSupp;
-
+    int accepted;
     @ManyToOne
     @JoinColumn(name = "id_etudiant")
     private Etudiant etudiant;
-
+    @ManyToOne
+    @JoinColumn(name = "id_administrator")
+    private Administrator admin;
     // Getters and Setters
+
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] file;
+
+    public int getAccept() {
+        return accepted;
+    }
+    public void setAccept(int accepted) {
+        this.accepted = accepted;
+    }
+
 
     public Long getId() {
         return id;
@@ -69,5 +83,19 @@ public class DocEtud {
 
     public void setEtudiant(Etudiant etudiant) {
         this.etudiant = etudiant;
+    }
+    public Administrator getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin (Administrator etudiant) {
+        this.admin = etudiant;
+    }
+    public byte[] getFile() {
+        return file;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
     }
 }

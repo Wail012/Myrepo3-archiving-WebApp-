@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Docs</title>
+
+</head>
+<body>
+<div th:include="ArchivisteNavbar :: navbarDba"></div>
+<div class="container">
+    <h2>Admin Documents</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Title</th>
+            <th>Date Created</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="doc : ${adminDocs}">
+            <td th:text="${doc.id}"></td>
+            <td th:text="${doc.filiere}"></td>
+            <td th:text="${doc.anneeEtud}"></td>
+            <td th:text="${doc.dateCreation}"></td>
+            <td>
+                <a class="btn btn-info" th:href="@{/admindocsdetails/{id}(id=${doc.id})}">Details</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

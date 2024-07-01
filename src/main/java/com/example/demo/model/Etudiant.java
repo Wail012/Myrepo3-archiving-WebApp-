@@ -7,22 +7,21 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Etudiant {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     Long id;
+    private Long id;
 
-     String nom;
-     String prenom;
-     String email;
-     String password;
-     int anneeAccess;
-     String filiere;
-     int AccessLevelAnnee;
-     int AccessLevelFiliere;
-
+    private String nom;
+    private String prenom;
+    private String email;
+    private String password;
+    private int anneeAccess;
+    private String filiere;
+    private int accessLevelAnnee;
+    private int accessLevelFiliere;
 
     // Getters and Setters
+
     public Long getId() {
         return id;
     }
@@ -62,4 +61,37 @@ public class Etudiant {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getAnneeAccess() {
+        return anneeAccess;
+    }
+
+    public void setAnneeAccess(int anneeAccess) {
+        this.anneeAccess = anneeAccess;
+    }
+
+    public String getFiliere() {
+        return filiere;
+    }
+
+    public void setFiliere(String filiere) {
+        this.filiere = filiere;
+    }
+
+    public int getAccessLevelAnnee() {
+        return accessLevelAnnee;
+    }
+
+    public void setAccessLevelAnnee(int accessLevelAnnee) {
+        this.accessLevelAnnee = accessLevelAnnee;
+    }
+
+    public int getAccessLevelFiliere() {
+        return accessLevelFiliere;
+    }
+
+    public void setAccessLevelFiliere(int accessLevelFiliere) {
+        this.accessLevelFiliere = accessLevelFiliere;
+    }
 }
+

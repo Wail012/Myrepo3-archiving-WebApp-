@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Doc Details</title>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Admin Document Details</h2>
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <th>ID</th>
+            <td th:text="${adminDoc.id}"></td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td th:text="${adminDoc.type}"></td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td th:text="${adminDoc.title}"></td>
+        </tr>
+        <tr>
+            <th>Date Created</th>
+            <td th:text="${adminDoc.dateCreated}"></td>
+        </tr>
+        <tr>
+            <th>Date Supp</th>
+            <td th:text="${adminDoc.dateSupp}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <h3>File Preview</h3>
+        <div th:if="${adminDoc.fileType.startsWith('image/')}">
+            <img th:src="'data:' + ${adminDoc.fileType} + ';base64,' + ${base64EncodedFile}" class="img-thumbnail" />
+        </div>
+        <div th:if="${adminDoc.fileType == 'application/pdf'}">
+            <embed th:src="'data:application/pdf;base64,' + ${base64EncodedFile}" width="100%" height="600px" />
+        </div>
+        <div th:if="${!adminDoc.fileType.startsWith('image/') && adminDoc.fileType != 'application/pdf'}">
+            <p>File cannot be displayed.</p>
+            <a th:href="'data:' + ${adminDoc.fileType} + ';base64,' + ${base64EncodedFile}" download="file">Download File</a>
+        </div>
+    </div>
+    <form th:action="@{/admindocs/accept/{id}(id=${adminDoc.id})}" method="post">
+        <button type="submit" class="btn btn-success">Accept</button>
+    </form>
+    <form th:action="@{/admindocs/refuse/{id}(id=${adminDoc.id})}" method="post">
+        <button type="submit" class="btn btn-danger">Refuse</button>
+    </form>
+    <form th:action="@{/admindocs/contenu/{id}(id=${adminDoc.id})}" method="get">
+        <button type="submit" class="btn btn-info">Afficher Contenu</button>
+    </form>
+    <a class="btn btn-primary" th:href="@{/admindocs}">Back to List</a>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>
