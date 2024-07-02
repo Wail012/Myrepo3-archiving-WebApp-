@@ -8,25 +8,26 @@
 <body>
 <div th:include="ArchivisteNavbar :: navbarDba"></div>
 <div class="container">
-    <h2>Admin Documents</h2>
+    <h2>Student Documents</h2>
     <table class="table table-bordered">
         <thead>
         <tr>
             <th>ID</th>
             <th>Type</th>
-            <th>Title</th>
-            <th>Date Created</th>
+            <th>Filiere</th>
+            <th>Annee Realisation</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="doc : ${adminDocs}">
+        <tr th:each="doc : ${DocEtud}">
             <td th:text="${doc.id}"></td>
+            <td th:text="${doc.type}"></td>
             <td th:text="${doc.filiere}"></td>
-            <td th:text="${doc.anneeEtud}"></td>
-            <td th:text="${doc.dateCreation}"></td>
+            <td th:text="${doc.anneeRealisation}"></td>
+
             <td>
-                <a class="btn btn-info" th:href="@{/detailadmindocsubmited/{id}(id=${doc.id})}">Details</a>
+                <a class="btn btn-info" th:href="@{/detaildocstudentsubmited/{id}(id=${doc.id})}">Details</a>
             </td>
         </tr>
         </tbody>

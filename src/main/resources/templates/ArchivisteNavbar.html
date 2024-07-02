@@ -25,13 +25,23 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Profil</a>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="gestionEtudiantDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="gestionEtudiant1Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Document Administratif
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="gestionEtudiantDropdown">
+                    <div class="dropdown-menu" aria-labelledby="gestionEtudiant1Dropdown">
                         <a class="dropdown-item" th:href="@{/docsubmited}">Documents Administratifs Soumis</a>
-                        <a class="dropdown-item" th:href="@{/submitdocetud}">Lister Documents Administratifs</a>
+                        <a class="dropdown-item" th:href="@{/listadmindoc}">Lister Documents Administratifs</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="gestionEtudiant2Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Document Volee Etudiant
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="gestionEtudiant2Dropdown">
+                        <a class="dropdown-item" th:href="@{/docstudentsubmited}">Documents Etudiant Soumis</a>
+                        <a class="dropdown-item" th:href="@{/submitdocetud}">Lister Documents Etudiant</a>
                     </div>
                 </li>
             </ul>

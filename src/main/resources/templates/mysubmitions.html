@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document Submissions</title>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Admin Documents</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Filiere</th>
+            <th>Categorie</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="adminDoc : ${adminDocs}">
+            <td th:text="${adminDoc.id}"></td>
+            <td th:text="${adminDoc.filiere}"></td>
+            <td th:text="${adminDoc.categorie}"></td>
+            <td th:if="${adminDoc.getAccept()== 0}">Submition pending</td>
+            <td th:if="${adminDoc.getAccept()== 1}">document accepted</td>
+            <td th:if="${adminDoc.getAccept()== -1}">document refused</td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Etud Documents</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Intitule</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="etudDoc : ${docEtuds}">
+            <td th:text="${etudDoc.id}"></td>
+            <td th:text="${etudDoc.intitule}"></td>
+            <td th:if="${etudDoc.getAccept()== 0}">Submition pending</td>
+            <td th:if="${etudDoc.getAccept()== 1}">document accepted</td>
+            <td th:if="${etudDoc.getAccept()== -1}">document refused</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>

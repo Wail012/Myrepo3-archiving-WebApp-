@@ -9,6 +9,7 @@ import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -144,6 +145,14 @@ public class DocService {
         return etudiantRepository.findAll();
 
     }
+    public List<AdminDoc> listAdminDoc( ) {
+        return admindocRepository.findAll();
+
+    }
+    public List<DocEtud> listDocEtud( ) {
+        return docEtudRepository.findAll();
+
+    }
 
 
 
@@ -159,6 +168,11 @@ public class DocService {
         return admindocRepository.findById(id);
 
     }
+    public Optional<DocEtud> findDocEtudById(Long id) {
+        return docEtudRepository.findById(id);
+
+    }
+
     public Optional<Administrator> findAdminById(Long id) {
         return administratorRepository.findById(id);
 
@@ -166,5 +180,12 @@ public class DocService {
     public Optional<Archiviste> findArchivisteById(Long id) {
         return archivisteRepository.findById(id);
 
+    }
+    public String getBase64EncodedFile(Long id) {
+        AdminDoc adminDoc = findAdminDocById(id).get();
+        if (adminDoc != null && adminDoc.getFile() != null) {
+            return Base64.getEncoder().encodeToString(adminDoc.getFile());
+        }
+        return null;
     }
 }

@@ -25,6 +25,10 @@ public class DocEtud {
     private Administrator admin;
     // Getters and Setters
 
+    @ManyToOne
+    @JoinColumn(name = "id_archiviste")
+    private Archiviste archiviste; ;
+
     @Lob
     @Column(columnDefinition = "LONGBLOB")
     private byte[] file;
@@ -36,6 +40,13 @@ public class DocEtud {
         this.accepted = accepted;
     }
 
+    public LocalDate getDateSupp() {
+        return DateSupp;
+    }
+
+    public void setDateSupp(LocalDate dateSupp) {
+        this.DateSupp = dateSupp;
+    }
 
     public Long getId() {
         return id;
@@ -97,5 +108,8 @@ public class DocEtud {
 
     public void setFile(byte[] file) {
         this.file = file;
+    }
+    public void setArchiviste (Archiviste etudiant) {
+        this.archiviste = etudiant;
     }
 }

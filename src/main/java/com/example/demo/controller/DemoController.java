@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -208,14 +209,181 @@ model.addAttribute("adminDocs", adminDocs);
         return "docsubmited";
 
     }
-    @GetMapping("/detaildoccsubmited")
+    @GetMapping("/detailadmindocsubmited/{id}")
     public String docsubmited( @PathVariable("id") Long id,Model model) {
 
         AdminDoc a=docService.findAdminDocById(id).get();
-        model.addAttribute("adminDocs", a);
-        return "docsubmited";
+        model.addAttribute("adminDoc", a);
+        return "DetailSubmitedAdminDoc";
 
     }
+    @GetMapping("/admindocsaccept/{id}")
+    public String docsubmitedacccept( @PathVariable("id")Long id,@RequestParam("dateSupp") LocalDate dateSupp) {
+
+        AdminDoc a=docService.findAdminDocById(id).get();
+        a.setAccept(1);
+        a.setDateSupp(dateSupp);
+        docService.AddAdminDoc(a);
+
+        return "redirect:/docsubmited";
+
+    }
+    @GetMapping("/admindocsrefuse/{id}")
+    public String docsubmitedrefuse( @PathVariable("id")Long id) {
+
+        AdminDoc a=docService.findAdminDocById(id).get();
+        a.setAccept(-1);
+        docService.AddAdminDoc(a);
+        return "redirect:/docsubmited";
+
+    }
+    @GetMapping("/admindoccontenu/{id}")
+    public ResponseEntity<byte[]> getFile(@PathVariable Long id) {
+        Optional<AdminDoc> adminDocOptional = docService.findAdminDocById(id);
+        if (adminDocOptional.isPresent()) {
+            AdminDoc adminDoc = adminDocOptional.get();
+            byte[] fileBytes = adminDoc.getFile();
+            HttpHeaders headers = new HttpHeaders();
+
+            headers.setContentType(MediaType.APPLICATION_PDF);
+            headers.setContentDisposition(ContentDisposition.inline().filename("file.pdf").build());
+            return new ResponseEntity<>(fileBytes, headers, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @GetMapping("/mysubmitions")
+    public String mysubmitions( Model model) {
+        String jpql = "SELECT d FROM AdminDoc d WHERE d.admin = :accept ";
+        TypedQuery<AdminDoc> query = entityManager.createQuery(jpql,AdminDoc.class);
+        query.setParameter("accept", docService.findAdminById(docService.getLoginId()).orElse(null));
+        List<AdminDoc> adminDocs = query.getResultList();
+
+        model.addAttribute("adminDocs", adminDocs);
+
+        String jpql1 = "SELECT d FROM DocEtud d WHERE d.admin = :accept ";
+        TypedQuery<DocEtud> query1 = entityManager.createQuery(jpql1,DocEtud.class);
+        query1.setParameter("accept", docService.findAdminById(docService.getLoginId()).orElse(null));
+        List<DocEtud> docEtuds = query1.getResultList();
+        model.addAttribute("docEtuds", docEtuds);
+        return "mysubmitions";
+
+    }
+    @GetMapping("/docstudentsubmited")
+    public String docstudentsubmited(Model model) {
+
+        String jpql = "SELECT d FROM DocEtud d WHERE d.accepted = :accept ";
+        TypedQuery<DocEtud> query = entityManager.createQuery(jpql,DocEtud.class);
+        query.setParameter("accept", 0);
+        List<DocEtud> adminDocs = query.getResultList();
+        model.addAttribute("DocEtud", adminDocs);
+        return "docstudentsubmited";
+
+    }
+    @GetMapping("/detaildocstudentsubmited/{id}")
+    public String docstudentsubmited( @PathVariable("id") Long id,Model model) {
+
+        DocEtud a=docService.findDocEtudById(id).get();
+        model.addAttribute("DocEtud", a);
+        return "DetailSubmitedDocEtud";
+
+    }
+    @GetMapping("/docstudentsaccept/{id}")
+    public String docstudentsubmitedacccept( @PathVariable("id")Long id,@RequestParam("dateSupp") LocalDate dateSupp) {
+
+        DocEtud a=docService.findDocEtudById(id).get();
+        a.setAccept(1);
+        a.setDateSupp(dateSupp);
+        a.setArchiviste(docService.findArchivisteById(docService.getLoginId()).orElse(null));
+        docService.AddEtudDoc(a);
+
+        return "redirect:/docstudentsubmited";
+
+    }
+    @GetMapping("/docstudentsrefuse/{id}")
+    public String docsubmitedrefuse1( @PathVariable("id")Long id) {
+
+        DocEtud a=docService.findDocEtudById(id).get();
+        a.setAccept(-1);
+        a.setArchiviste(docService.findArchivisteById(docService.getLoginId()).orElse(null));
+        docService.AddEtudDoc(a);
+        return "redirect:/docstudentsubmited";
+
+    }
+    @GetMapping("/docstudentcontenu/{id}")
+    public ResponseEntity<byte[]> getFile1(@PathVariable Long id) {
+        Optional<DocEtud> adminDocOptional = docService.findDocEtudById(id);
+        if (adminDocOptional.isPresent()) {
+            DocEtud adminDoc = adminDocOptional.get();
+            byte[] fileBytes = adminDoc.getFile();
+            HttpHeaders headers = new HttpHeaders();
+
+            headers.setContentType(MediaType.APPLICATION_PDF);
+            headers.setContentDisposition(ContentDisposition.inline().filename("file.pdf").build());
+            return new ResponseEntity<>(fileBytes, headers, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @GetMapping("/listadmindoc")
+    public String getFile1(Model model) {
+        String jpql = "SELECT d FROM AdminDoc d WHERE d.accepted = :accept ";
+        TypedQuery<AdminDoc> query = entityManager.createQuery(jpql,AdminDoc.class);
+        query.setParameter("accept", 1);
+        List<AdminDoc> a = query.getResultList();
+        model.addAttribute("adminDocs", a);
+        return "listadmindoc";
 
 
+    }
+    @GetMapping("/searchadmindoc")
+    public String getFile2(@RequestParam("keyword") String search,Model model) {
+
+        String jpql = "SELECT d FROM AdminDoc d WHERE (d.filiere like :accept or d.categorie like :accept) and d.accepted = :accept1";
+        TypedQuery<AdminDoc> query = entityManager.createQuery(jpql,AdminDoc.class);
+        query.setParameter("accept", search);
+        query.setParameter("accept1", 1);
+        List<AdminDoc> a = query.getResultList();
+        model.addAttribute("adminDocs", a);
+        return "listadmindoc";
+
+
+    }
+    @GetMapping("/admindocfilter")
+    public String getFile3(@RequestParam("categorie") String categorie,@RequestParam("filiere") String filiere,Model model) {
+        String jpql;
+        TypedQuery<AdminDoc> query = null;
+        if(categorie.equals("All") && (filiere.equals("All")))
+        {
+
+            jpql = "SELECT d FROM AdminDoc d WHERE  d.accepted = :accept1";
+            query = entityManager.createQuery(jpql,AdminDoc.class);
+            
+        }
+        else if (categorie.equals("All") && (!filiere.equals("All")))
+        {
+            jpql = "SELECT d FROM AdminDoc d WHERE d.filiere like :accept2  and d.accepted = :accept1";
+            query = entityManager.createQuery(jpql,AdminDoc.class);
+            query.setParameter("accept2", filiere);
+        }
+        else if (!categorie.equals("All") && (filiere.equals("All")))
+        {
+            jpql = "SELECT d FROM AdminDoc d WHERE d.categorie like :accept2  and d.accepted = :accept1";
+            query = entityManager.createQuery(jpql,AdminDoc.class);
+            query.setParameter("accept2", categorie);
+        }
+        else {
+            jpql = "SELECT d FROM AdminDoc d WHERE (d.filiere like :accept or d.categorie like :accept2) and d.accepted = :accept1";
+            query = entityManager.createQuery(jpql,AdminDoc.class);
+            query.setParameter("accept", filiere);
+            query.setParameter("accept2", categorie);
+        }
+
+        query.setParameter("accept1", 1);
+        List<AdminDoc> a = query.getResultList();
+        model.addAttribute("adminDocs", a);
+        return "listadmindoc";
+
+
+    }
 }

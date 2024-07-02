@@ -26,6 +26,12 @@ public class AdminDoc {
     @ManyToOne
     @JoinColumn(name = "id_administrator")
     private Administrator admin;
+
+    @ManyToOne
+    @JoinColumn(name = "id_archiviste")
+    private Archiviste archiviste; ;
+
+
     // Getters and Setters
     public Long getId() {
         return id;
@@ -62,6 +68,13 @@ public class AdminDoc {
     public void setDateCreation(LocalDate dateCreation) {
         this.dateCreation = dateCreation;
     }
+    public LocalDate getDateSupp() {
+        return dateSupp;
+    }
+
+    public void setDateSupp(LocalDate dateSupp) {
+        this.dateSupp = dateSupp;
+    }
 
     public String getFiliere() {
         return filiere;
@@ -84,5 +97,8 @@ public class AdminDoc {
 
     public void setAdmin (Administrator etudiant) {
         this.admin = etudiant;
+    }
+    public void setArchiviste (Archiviste etudiant) {
+        this.archiviste = etudiant;
     }
 }
