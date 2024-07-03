@@ -3,55 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Fragments</title>
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+    <link rel="stylesheet" th:href="@{/css/style.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
 <!-- Navbar Fragment -->
 <div th:fragment="navbarDba">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Mon Application</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profil</a>
-                </li>
+    <div class="probootstrap-header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-9 probootstrap-top-quick-contact-info">
+                    <span><i class="icon-location2"></i> Brooklyn, NY 10036, United States</span>
+                    <span><i class="icon-phone2"></i> +1-123-456-7890</span>
+                    <span><i class="icon-mail"></i> info@probootstrap.com</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 probootstrap-top-social">
+                    <ul>
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                        <li><a href="#"><i class="icon-instagram2"></i></a></li>
+                        <li><a href="#"><i class="icon-youtube"></i></a></li>
+                        <li><a href="#" class="probootstrap-search-icon js-probootstrap-search"><i class="icon-search"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default probootstrap-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="btn-more js-btn-more visible-xs">
+                    <a href="#"><i class="icon-dots-three-vertical"></i></a>
+                </div>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="gestionEtudiant1Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Document Administratif
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="gestionEtudiant1Dropdown">
-                        <a class="dropdown-item" th:href="@{/docsubmited}">Documents Administratifs Soumis</a>
-                        <a class="dropdown-item" th:href="@{/listadmindoc}">Lister Documents Administratifs</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="gestionEtudiant2Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Document Volee Etudiant
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="gestionEtudiant2Dropdown">
-                        <a class="dropdown-item" th:href="@{/docstudentsubmited}">Documents Etudiant Soumis</a>
-                        <a class="dropdown-item" th:href="@{/submitdocetud}">Lister Documents Etudiant</a>
-                    </div>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/logout}">Se déconnecter</a>
-                </li>
-            </ul>
+                    <img th:src="@{/img/logo.png}" alt="Mon Application" style="height: 80px; margin-top: 5px;">
+
+            </div>
+            <div id="navbar-collapse" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a th:href="@{/}">Accueil</a></li>
+                    <li><a th:href="@{/profil}">Profil</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Document Administratif</a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/docsubmited}">Documents Administratifs Soumis</a></li>
+                            <li><a th:href="@{/listadmindoc}">Lister Documents Administratifs</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Document Volee Etudiant</a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/docstudentsubmited}">Documents Etudiant Soumis</a></li>
+                            <li><a th:href="@{/listdocetud}">Lister Documents Etudiant</a></li>
+                        </ul>
+                    </li>
+                    <li><a th:href="@{/}">Se déconnecter</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>

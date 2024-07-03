@@ -2,13 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ajouter Étudiant</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+    <link rel="stylesheet" th:href="@{/css/style.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
 <!-- Inclusion du fragment navbar -->
-<div th:include="AdminDbaNavbar :: navbarDba"></div>
+<div th:replace="AdminDbaNavbar :: navbarDba"></div>
 
 <div class="container mt-4">
     <h2>Ajouter Étudiant</h2>
@@ -35,7 +39,13 @@
         </div>
         <div class="form-group">
             <label for="filiere">Filière:</label>
-            <input type="text" class="form-control" id="filiere" name="filiere" required>
+            <select class="form-control" id="filiere" name="filiere">
+                <option value="All">All</option>
+                <option value="math">math</option>
+                <option value="genie civil">genie civil</option>
+                <option value="genie industriel">genie industriel</option>
+                <option value="ifa">ifa</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="AccessLevelAnnee">Niveau d'accès année:</label>
@@ -49,14 +59,10 @@
     </form>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+ayQ9FkWiw23Fd4pG9dUFMgJL4iz/HnNpFVUJLnF4YED6sk"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy2F6BHv5vhoN0pZ4P9Pi9E9RV8oflAvcJ"
-        crossorigin="anonymous"></script>
+<!-- Inclusion du fragment footer -->
+<div th:replace="footer :: footer"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>

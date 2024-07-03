@@ -3,19 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+    <link rel="stylesheet" th:href="@{/css/style.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
+<div th:include="AdminNavbar :: navbarDba"></div>
 <div class="container mt-5">
     <h2>Add Document</h2>
     <form th:action="@{/submitdocetud}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="type">Type</label>
-            <input type="text" class="form-control" id="type" name="type" required>
+            <select class="form-control" id="type" name="type">
+                <option value="All">All</option>
+                <option value="PFE">PFE</option>
+                <option value="PFA">PFA</option>
+
+
+
+            </select>
         </div>
         <div class="form-group">
             <label for="filiere">Filiere</label>
-            <input type="text" class="form-control" id="filiere" name="filiere" required>
+            <select class="form-control" id="filiere" name="filiere">
+                <option value="All">All</option>
+                <option value="math">math</option>
+                <option value="genie civil">genie civil</option>
+                <option value="genie industriel">genie industriel</option>
+                <option value="ifa">ifa</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="anneeRealisation">Annee Realisation</label>
@@ -44,5 +62,8 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+<div th:replace="footer :: footer"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -145,6 +145,14 @@ public class DocService {
         return etudiantRepository.findAll();
 
     }
+    public List<Administrator> listAdmin( ) {
+        return administratorRepository.findAll();
+
+    }
+    public List<Archiviste> listArchiviste( ) {
+        return archivisteRepository.findAll();
+
+    }
     public List<AdminDoc> listAdminDoc( ) {
         return admindocRepository.findAll();
 
@@ -158,6 +166,14 @@ public class DocService {
 
     public void suppEtud( Long id) {
         etudiantRepository.deleteById(id);
+
+    }
+    public void suppAdmin( Long id) {
+        administratorRepository.deleteById(id);
+
+    }
+    public void suppArchiviste( Long id) {
+        archivisteRepository.deleteById(id);
 
     }
     public Optional<Etudiant> findEtudById(Long id) {

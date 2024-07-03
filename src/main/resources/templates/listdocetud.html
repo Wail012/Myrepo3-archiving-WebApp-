@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Docs</title>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Student Documents</h2>
+
+    <!-- Search bar -->
+    <form th:action="@{/searchdocetud}" method="get" class="form-inline">
+        <div class="form-group">
+            <input type="text" class="form-control" name="keyword" placeholder="Search...">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <!-- Filter form -->
+    <form th:action="@{/docetudfilter}" method="get" class="form-inline" style="margin-top: 10px;">
+        <div class="form-group">
+            <label for="filterfiliere">filiere:</label>
+            <select class="form-control" id="filterfiliere" name="filiere">
+                <option value="All">All</option>
+                <option value="math">math</option>
+                <option value="genie civil">genie civil</option>
+                <option value="genie industriel">genie industriel</option>
+                <option value="ifa">ifa</option>
+
+
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="filterStatus">Type:</label>
+            <select class="form-control" id="filterStatus" name="type">
+                <option value="All">All</option>
+                <option value="PFE">PFE</option>
+                <option value="PFA">PFA</option>
+
+
+
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Apply Filter</button>
+    </form>
+
+    <!-- Table of AdminDocs -->
+    <table class="table table-bordered" style="margin-top: 10px;">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Filiere</th>
+            <th>Type</th>
+
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="adminDoc : ${DocEtud}">
+            <td th:text="${adminDoc.id}"></td>
+            <td th:text="${adminDoc.filiere}"></td>
+            <td th:text="${adminDoc.type}"></td>
+            
+            <td>
+                <a th:href="@{/admindocs/details/{id}(id=${adminDoc.id})}" class="btn btn-info">Details</a>
+                <a th:href="@{/admindocs/download/{id}(id=${adminDoc.id})}" class="btn btn-success">Download</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>

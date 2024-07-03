@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Doc Details</title>
-    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+    <link rel="stylesheet" th:href="@{/css/style.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
+<div th:include="ArchivisteNavbar :: navbarDba"></div>
 <div class="container">
     <h2>Admin Document Details</h2>
     <table class="table table-bordered">
@@ -15,15 +20,19 @@
             <td th:text="${adminDoc.id}"></td>
         </tr>
         <tr>
-            <th>Type</th>
+            <th>Filiere</th>
             <td th:text="${adminDoc.filiere}"></td>
+        </tr>
+        <tr>
+            <th>Categorie</th>
+            <td th:text="${adminDoc.categorie}"></td>
         </tr>
         <tr>
             <th>Date creation</th>
             <td th:text="${adminDoc.dateCreation}"></td>
         </tr>
         <tr>
-            <th>Date creation</th>
+            <th>Annee Etude</th>
             <td th:text="${adminDoc.anneeEtud}"></td>
         </tr>
 
@@ -52,7 +61,8 @@
 <iframe th:src="@{/admindoccontenu/{id}(id=${adminDoc.id})}" width="100%" height="600px"></iframe>
 </body>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<div th:replace="footer :: footer"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>

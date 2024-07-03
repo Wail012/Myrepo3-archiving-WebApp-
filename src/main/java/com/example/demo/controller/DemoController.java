@@ -386,4 +386,129 @@ model.addAttribute("adminDocs", adminDocs);
 
 
     }
+    @GetMapping("/listdocetud")
+    public String getFile3(Model model) {
+        String jpql = "SELECT d FROM DocEtud d WHERE d.accepted = :accept ";
+        TypedQuery<DocEtud> query = entityManager.createQuery(jpql,DocEtud.class);
+        query.setParameter("accept", 1);
+        List<DocEtud> a = query.getResultList();
+        model.addAttribute("DocEtud", a);
+        return "listdocetud";
+
+
+    }
+    @GetMapping("/searchdocetud")
+    public String getFile3(@RequestParam("keyword") String search,Model model) {
+
+        String jpql = "SELECT d FROM DocEtud d WHERE (d.filiere like :accept or d.type like :accept) and d.accepted = :accept1";
+        TypedQuery<DocEtud> query = entityManager.createQuery(jpql,DocEtud.class);
+        query.setParameter("accept", search);
+        query.setParameter("accept1", 1);
+        List<DocEtud> a = query.getResultList();
+        model.addAttribute("DocEtud", a);
+        return "listdocetud";
+
+
+    }
+    @GetMapping("/docetudfilter")
+    public String getFile4(@RequestParam("type") String type,@RequestParam("filiere") String filiere,Model model) {
+        String jpql;
+        TypedQuery<DocEtud> query = null;
+        if(type.equals("All") && (filiere.equals("All")))
+        {
+
+            jpql = "SELECT d FROM DocEtud d WHERE  d.accepted = :accept1";
+            query = entityManager.createQuery(jpql,DocEtud.class);
+
+        }
+        else if (type.equals("All") && (!filiere.equals("All")))
+        {
+            jpql = "SELECT d FROM AdminDoc d WHERE d.filiere like :accept2  and d.accepted = :accept1";
+            query = entityManager.createQuery(jpql,DocEtud.class);
+            query.setParameter("accept2", filiere);
+        }
+        else if (!type.equals("All") && (filiere.equals("All")))
+        {
+            jpql = "SELECT d FROM DocEtud d WHERE d.type like :accept2  and d.accepted = :accept1";
+            query = entityManager.createQuery(jpql,DocEtud.class);
+            query.setParameter("accept2", type);
+        }
+        else {
+            jpql = "SELECT d FROM DocEtud d WHERE (d.filiere like :accept or d.type like :accept2) and d.accepted = :accept1";
+            query = entityManager.createQuery(jpql,DocEtud.class);
+            query.setParameter("accept", filiere);
+            query.setParameter("accept2", type);
+        }
+
+        query.setParameter("accept1", 1);
+        List<DocEtud> a = query.getResultList();
+        model.addAttribute("DocEtud", a);
+        return "listdocetud";
+
+
+    }
+    @GetMapping("/listadmin")
+    public String listadmin( Model model) {
+        List<Administrator> admins = docService.listAdmin();
+        model.addAttribute("etudiants", admins);
+        return "listAdmin";
+
+    }
+    @GetMapping("/suppadmin/{id}")
+    public String suppadmin( @PathVariable("id") Long id) {
+        docService.suppAdmin(id);
+
+        return "redirect:/listadmin";
+
+    }
+    @GetMapping("/modifadmin/{id}")
+    public String modifadmin( @PathVariable("id") Long id,Model model) {
+        Optional<Administrator> etudiant=docService.findAdminById(id);
+        Administrator etudiant1=etudiant.get();
+        model.addAttribute("etudiant", etudiant1);
+
+        return "ModifAdminFormulaire";
+
+    }
+    @PostMapping("/modifadmin")
+    public String modifadminpost(@ModelAttribute Administrator a, Model model) {
+        docService.AddAdmin(a);
+
+        model.addAttribute("etudiant", a);
+
+        return "ModifAdminFormulaire";
+
+    }
+    @GetMapping("/listarchiviste")
+    public String listarchiviste( Model model) {
+        List<Archiviste> admins = docService.listArchiviste();
+        model.addAttribute("etudiants", admins);
+        return "listArchiviste";
+
+    }
+    @GetMapping("/supparchiviste/{id}")
+    public String supparchiviste( @PathVariable("id") Long id) {
+        docService.suppArchiviste(id);
+
+        return "redirect:/listarchiviste";
+
+    }
+    @GetMapping("/modifarchiviste/{id}")
+    public String modifarchiviste( @PathVariable("id") Long id,Model model) {
+        Optional<Archiviste> etudiant=docService.findArchivisteById(id);
+        Archiviste etudiant1=etudiant.get();
+        model.addAttribute("etudiant", etudiant1);
+
+        return "ModifArchivisteFormulaire";
+
+    }
+    @PostMapping("/modifarchiviste")
+    public String modifarchivistepost(@ModelAttribute Archiviste a, Model model) {
+        docService.AddArchiviste(a);
+
+        model.addAttribute("etudiant", a);
+
+        return "ModifArchivisteFormulaire";
+
+    }
 }

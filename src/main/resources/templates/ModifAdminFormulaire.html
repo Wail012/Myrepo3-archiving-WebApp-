@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter Administrateur</title>
+
+    <link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+    <link rel="stylesheet" th:href="@{/css/style.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<!-- Inclusion du fragment navbar -->
+<div th:include="AdminDbaNavbar :: navbarDba"></div>
+
+<div class="container mt-4">
+    <h2>Modifier Administrateur</h2>
+    <form th:action="@{/modifadmin}" method="post">
+
+            <input type="hidden" class="form-control" id="id" name="id" th:value="${etudiant.id}">
+
+        <div class="form-group">
+            <label for="nom">Nom:</label>
+            <input type="text" class="form-control" id="nom" name="nom" th:value="${etudiant.nom}" required>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom:</label>
+            <input type="text" class="form-control" id="prenom" name="prenom" th:value="${etudiant.prenom}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" th:value="${etudiant.email}" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe:</label>
+            <input type="password" class="form-control" id="password" name="password" th:value="${etudiant.password}" required>
+        </div>
+
+
+
+
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>
+<div th:replace="footer :: footer"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>
