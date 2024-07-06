@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="413fe4e4-dc93-41c0-bbd6-13925f68d319" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/GlobalSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/GlobalSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Service/DocService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Service/DocService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DemoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/AdminDoc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/AdminDoc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Administrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Administrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Categorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Categorie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/CategorieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/CategorieRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/AdminNavbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/AdminNavbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/AjoutAdminFormulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/AjoutAdminFormulaire.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ArchivisteNavbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ArchivisteNavbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ConsulterAdminDoc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ConsulterAdminDoc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ConsulterDocEtud.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ConsulterDocEtud.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/DetailSubmitedAdminDoc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/DetailSubmitedAdminDoc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/DetailSubmitedDocEtud.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/DetailSubmitedDocEtud.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ModifAdminFormulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ModifAdminFormulaire.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/SubmitDocEtudFormulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/SubmitDocEtudFormulaire.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/SubmitDocFormulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/SubmitDocFormulaire.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminlistadmindoc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminlistadmindoc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/docstudentsubmited.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/docstudentsubmited.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/docsubmited.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/docsubmited.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/listadmindoc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/listadmindoc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/listdocetud.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/listdocetud.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mysubmitions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mysubmitions.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2iYi1GIyYekRHm35wKVhVes0O8c" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Maven.demo [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.DemoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Desktop/demo/src/main/resources/templates&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\demo\src\main\resources\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\demo\src\main\resources\static\img" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.demo" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.demo.repository" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="413fe4e4-dc93-41c0-bbd6-13925f68d319" name="Changes" comment="" />
+      <created>1719673694860</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719673694860</updated>
+      <workItem from="1719673696021" duration="1181000" />
+      <workItem from="1719687453741" duration="9517000" />
+      <workItem from="1719703889887" duration="6633000" />
+      <workItem from="1719751056926" duration="14352000" />
+      <workItem from="1719782975408" duration="5014000" />
+      <workItem from="1719788041242" duration="3825000" />
+      <workItem from="1719831776053" duration="14321000" />
+      <workItem from="1719861197405" duration="18079000" />
+      <workItem from="1719923165728" duration="1259000" />
+      <workItem from="1719928041894" duration="5620000" />
+      <workItem from="1720011613970" duration="16683000" />
+      <workItem from="1720036066079" duration="6964000" />
+      <workItem from="1720190916074" duration="26552000" />
+      <workItem from="1720302530429" duration="79000" />
+      <workItem from="1720302989294" duration="712000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

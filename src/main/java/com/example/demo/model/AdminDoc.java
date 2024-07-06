@@ -12,7 +12,7 @@ public class AdminDoc {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      Long id;
-     String categorie;
+
      LocalDate dateCreation;
      int accepted;
      String filiere;
@@ -22,6 +22,10 @@ public class AdminDoc {
     @Lob
     @Column(columnDefinition = "LONGBLOB")
     private byte[] file;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categorie")
+     Categorie categorie;
 
     @ManyToOne
     @JoinColumn(name = "id_administrator")
@@ -53,11 +57,11 @@ public class AdminDoc {
         this.id = id;
     }
 
-    public String getCategorie() {
+    public Categorie getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(String categorie) {
+    public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }
 

@@ -1,8 +1,8 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.AdminDoc;
-import com.example.demo.model.Administrator;
+import com.example.demo.model.Categorie;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AdminDocRepository extends JpaRepository<AdminDoc, Long> {
+public interface CategorieRepository extends JpaRepository<Categorie, Long> {
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+    <link rel="stylesheet" th:href="@{/css/style.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+</head>
+<body>
+<div th:include="ArchivisteNavbar :: navbarDba"></div>
+
+<div class="container mt-4">
+    <div class="jumbotron">
+        <h1 class="display-4">Bienvenue, Archiviste !</h1>
+        <p class="lead">Vous êtes connecté à l'application en tant qu'archiviste.</p>
+        <hr class="my-4">
+        <p>Cette page d'accueil est un exemple pour illustrer Thymeleaf avec Bootstrap.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">En savoir plus</a>
+    </div>
+</div>
+
+<div th:replace="footer :: footer"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>

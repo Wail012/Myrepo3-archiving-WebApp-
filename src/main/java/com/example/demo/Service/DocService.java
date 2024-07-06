@@ -34,7 +34,8 @@ public class DocService {
     private Long loginId;
 
     private int loginRole;
-
+    @Autowired
+    private CategorieRepository categorieRepository;
 
 
     public void setLoggedInUser(Long userId, int role) {
@@ -149,6 +150,10 @@ public class DocService {
         return administratorRepository.findAll();
 
     }
+    public List<Categorie> listCategorie( ) {
+        return categorieRepository.findAll();
+
+    }
     public List<Archiviste> listArchiviste( ) {
         return archivisteRepository.findAll();
 
@@ -182,6 +187,10 @@ public class DocService {
     }
     public Optional<AdminDoc> findAdminDocById(Long id) {
         return admindocRepository.findById(id);
+
+    }
+    public Optional<Categorie> findCategorieById(Long id) {
+        return categorieRepository.findById(id);
 
     }
     public Optional<DocEtud> findDocEtudById(Long id) {

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ajouter Étudiant</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+    <link rel="stylesheet" th:href="@{/css/style.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<!-- Inclusion du fragment navbar -->
+<div th:replace="AdminDbaNavbar :: navbarDba"></div>
+
+<div class="container mt-4">
+    <h2>Ajouter Étudiant</h2>
+    <form th:action="@{/ajoutetud}" method="post">
+        <div class="form-group">
+            <label for="nom">Nom:</label>
+            <input type="text" class="form-control" id="nom" name="nom" required>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom:</label>
+            <input type="text" class="form-control" id="prenom" name="prenom" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="anneeAccess">Année d'accès:</label>
+            <input type="number" class="form-control" id="anneeAccess" name="anneeAccess" required>
+        </div>
+        <div class="form-group">
+            <label for="filiere">Filière:</label>
+            <select class="form-control" id="filiere" name="filiere">
+                <option value="All">All</option>
+                <option value="math">math</option>
+                <option value="genie civil">genie civil</option>
+                <option value="genie industriel">genie industriel</option>
+                <option value="ifa">ifa</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="AccessLevelAnnee">Niveau d'accès année:</label>
+            <input type="number" class="form-control" id="AccessLevelAnnee" name="AccessLevelAnnee" required>
+        </div>
+        <div class="form-group">
+            <label for="AccessLevelFiliere">Niveau d'accès filière:</label>
+            <input type="number" class="form-control" id="AccessLevelFiliere" name="AccessLevelFiliere" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</div>
+
+<!-- Inclusion du fragment footer -->
+<div th:replace="footer :: footer"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>

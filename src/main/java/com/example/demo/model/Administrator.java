@@ -16,6 +16,18 @@ public class Administrator {
     private String email;
     private String password;
 
+private String departement;
+
+    public String getDepartement() {
+        return departement;
+    }
+
+    public void setDepartement(String departement) {
+        this.departement = departement;
+    }
+
+
+
     // Getters and Setters
     public Long getId() {
         return id;

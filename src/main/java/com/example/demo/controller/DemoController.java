@@ -5,6 +5,7 @@ import com.example.demo.model.*;
 import com.example.demo.Service.DocService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -50,7 +51,8 @@ EntityManager entityManager;
                 return "WelcomeAdminDba";
             }
             else if(role.equals("2")) {
-
+               Administrator a=docService.findAdminById( docService.getLoginId()).get();
+               model.addAttribute("admin",a);
                 return "WelcomeAdmin";
             }
             else if(role.equals("3")) {
@@ -105,21 +107,43 @@ EntityManager entityManager;
 
     }
     @GetMapping("/submitdoc")
-    public String submitdoc() {
+    public String submitdoc(Model model) {
+        Administrator a=docService.findAdminById(docService.getLoginId()).get();
+        List<Categorie> b;
+        if(a.getDepartement().equals("All"))
+        {
+            String jpql = "SELECT d FROM Categorie d WHERE d.Departement like :accept or d.Departement like :accept1  ";
+            TypedQuery<Categorie> query = entityManager.createQuery(jpql,Categorie.class);
+            query.setParameter("accept", "RH");
+            query.setParameter("accept1", "Finance");
+            b = query.getResultList();
+        }
+        else
+        {
+            String jpql = "SELECT d FROM Categorie d WHERE d.Departement like :accept ";
+            TypedQuery<Categorie> query = entityManager.createQuery(jpql,Categorie.class);
+            query.setParameter("accept", a.getDepartement());
+             b = query.getResultList();
+        }
 
 
+
+
+        model.addAttribute("categorie", b);
+        Administrator ad=docService.findAdminById( docService.getLoginId()).get();
+        model.addAttribute("admin",ad);
         return "SubmitDocFormulaire";
 
     }
     @PostMapping("/submitdoc")
     public String submitdocpost(@RequestParam("file") MultipartFile file,
-                                @RequestParam("categorie") String categorie,
+                                @RequestParam("categorie") Long categorie,
                                 @RequestParam("filiere") String filiere,
-                                @RequestParam("anneeEtud") int anneeEtud, @RequestParam("dateCreation") LocalDate d) throws IOException {
+                                @RequestParam("anneeEtud") int anneeEtud, @RequestParam("dateCreation") LocalDate d,Model model) throws IOException {
 
 AdminDoc b=new AdminDoc();
 
-b.setCategorie(categorie);
+b.setCategorie(docService.findCategorieById(categorie).get());
 b.setFiliere(filiere);
 b.setAnneeEtud(anneeEtud);
 b.setDateCreation(d);
@@ -130,6 +154,29 @@ b.setAccept(0);
         docService.AddAdminDoc(b);
 
 
+        Administrator a=docService.findAdminById(docService.getLoginId()).get();
+        List<Categorie> e;
+        if(a.getDepartement().equals("All"))
+        {
+            String jpql = "SELECT d FROM Categorie d WHERE d.Departement like :accept or d.Departement like :accept1  ";
+            TypedQuery<Categorie> query = entityManager.createQuery(jpql,Categorie.class);
+            query.setParameter("accept", "RH");
+            query.setParameter("accept1", "Finance");
+            e = query.getResultList();
+        }
+        else
+        {
+            String jpql = "SELECT d FROM Categorie d WHERE d.Departement like :accept ";
+            TypedQuery<Categorie> query = entityManager.createQuery(jpql,Categorie.class);
+            query.setParameter("accept", a.getDepartement());
+            e = query.getResultList();
+        }
+
+
+        Administrator ad=docService.findAdminById( docService.getLoginId()).get();
+        model.addAttribute("admin",ad);
+
+        model.addAttribute("categorie", e);
 
         return "SubmitDocFormulaire";
 
@@ -152,6 +199,8 @@ b.setAccept(0);
 
        List<Etudiant> a=docService.listEtud();
        model.addAttribute("etudiants", a);
+        Administrator ad=docService.findAdminById( docService.getLoginId()).get();
+        model.addAttribute("admin",ad);
         return "SubmitDocEtudFormulaire";
 
     }
@@ -181,7 +230,8 @@ b.setAccept(0);
         List<Etudiant> a=docService.listEtud();
         model.addAttribute("etudiants", a);
 
-
+        Administrator ad=docService.findAdminById( docService.getLoginId()).get();
+        model.addAttribute("admin",ad);
         return "SubmitDocEtudFormulaire";
 
     }
@@ -266,6 +316,8 @@ model.addAttribute("adminDocs", adminDocs);
         query1.setParameter("accept", docService.findAdminById(docService.getLoginId()).orElse(null));
         List<DocEtud> docEtuds = query1.getResultList();
         model.addAttribute("docEtuds", docEtuds);
+        Administrator ad=docService.findAdminById( docService.getLoginId()).get();
+        model.addAttribute("admin",ad);
         return "mysubmitions";
 
     }
@@ -325,31 +377,133 @@ model.addAttribute("adminDocs", adminDocs);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @GetMapping("/listadmindoc")
+    @GetMapping("/adminlistadmindoc")
     public String getFile1(Model model) {
-        String jpql = "SELECT d FROM AdminDoc d WHERE d.accepted = :accept ";
-        TypedQuery<AdminDoc> query = entityManager.createQuery(jpql,AdminDoc.class);
-        query.setParameter("accept", 1);
-        List<AdminDoc> a = query.getResultList();
+
+        Administrator b=docService.findAdminById(docService.getLoginId()).orElse(null);
+        List<AdminDoc> a;
+        if(b.getDepartement().equals("All")) {
+            String jpql = "SELECT d FROM AdminDoc d WHERE d.accepted = :accept ";
+            TypedQuery<AdminDoc> query = entityManager.createQuery(jpql,AdminDoc.class);
+            query.setParameter("accept", 1);
+            a=query.getResultList();
+        }
+       else
+        {
+            String jpql = "SELECT d FROM AdminDoc d WHERE d.categorie IN (SELECT c FROM Categorie c WHERE c.Departement LIKE :department)";
+
+            TypedQuery<AdminDoc> query = entityManager.createQuery(jpql,AdminDoc.class);
+            query.setParameter("department", b.getDepartement());
+            a=query.getResultList();
+        }
+
+
+        model.addAttribute("adminDocs", a);
+        Administrator ad=docService.findAdminById( docService.getLoginId()).get();
+        model.addAttribute("admin",ad);
+        String jpql1;
+        if(!docService.findAdminById(docService.getLoginId()).get().getDepartement().equals("All")) {
+            jpql1 = "SELECT d FROM Categorie d WHERE d.Departement = :accept ";
+            TypedQuery<Categorie> query1 = entityManager.createQuery(jpql1,Categorie.class);
+            query1.setParameter("accept", b.getDepartement());
+            model.addAttribute("categorie",query1.getResultList());
+        }
+        else
+        {
+             jpql1 = "SELECT d FROM Categorie d WHERE d.Departement like :accept1 or d.Departement like :accept2 ";
+            TypedQuery<Categorie> query1 = entityManager.createQuery(jpql1,Categorie.class);
+            query1.setParameter("accept2","Finance");
+            query1.setParameter("accept1", "RH");
+            model.addAttribute("categorie",query1.getResultList());
+        }
+
+
+        return "adminlistadmindoc";
+
+
+    }
+    @GetMapping("/archivistelistadmindoc")
+    public String getFile4(Model model) {
+
+
+        List<AdminDoc> a;
+
+            String jpql = "SELECT d FROM AdminDoc d WHERE d.accepted = :accept ";
+            TypedQuery<AdminDoc> query = entityManager.createQuery(jpql,AdminDoc.class);
+            query.setParameter("accept", 1);
+            a=query.getResultList();
+
+
+
+
+
+
+
+
         model.addAttribute("adminDocs", a);
         return "listadmindoc";
 
 
     }
-    @GetMapping("/searchadmindoc")
+
+    @GetMapping("/archivistesearchadmindoc")
     public String getFile2(@RequestParam("keyword") String search,Model model) {
 
-        String jpql = "SELECT d FROM AdminDoc d WHERE (d.filiere like :accept or d.categorie like :accept) and d.accepted = :accept1";
+        String jpql = "SELECT d FROM AdminDoc d WHERE (d.filiere like :accept or d.categorie.titrecategorie like :accept2) and d.accepted = :accept1";
         TypedQuery<AdminDoc> query = entityManager.createQuery(jpql,AdminDoc.class);
-        query.setParameter("accept", search);
+        query.setParameter("accept", "%" + search + "%");
         query.setParameter("accept1", 1);
+        query.setParameter("accept2", "%" + search + "%");
         List<AdminDoc> a = query.getResultList();
         model.addAttribute("adminDocs", a);
         return "listadmindoc";
 
 
     }
-    @GetMapping("/admindocfilter")
+    @GetMapping("/adminsearchadmindoc")
+    public String getFile5(@RequestParam("keyword") String search,Model model) {
+        List<AdminDoc> a;
+        if(docService.findAdminById(docService.getLoginId()).orElse(null).getDepartement().equals("All")) {
+            String jpql = "SELECT d FROM AdminDoc d WHERE (d.filiere like :accept or d.categorie.titrecategorie like :accept2) and d.accepted = :accept1 ";
+            TypedQuery<AdminDoc> query = entityManager.createQuery(jpql, AdminDoc.class);
+            query.setParameter("accept", "%" + search + "%");
+            query.setParameter("accept1", 1);
+            query.setParameter("accept2", "%" + search + "%");
+            a = query.getResultList();
+        }
+        else
+        {
+            String jpql = "SELECT d FROM AdminDoc d WHERE (d.filiere like :accept or d.categorie.titrecategorie like :accept2) and d.accepted = :accept1 and d.categorie.Departement like :accept3 ";
+            TypedQuery<AdminDoc> query = entityManager.createQuery(jpql, AdminDoc.class);
+            query.setParameter("accept", "%" + search + "%");
+            query.setParameter("accept1", 1);
+            query.setParameter("accept2", "%" + search + "%");
+            query.setParameter("accept3", docService.findAdminById(docService.getLoginId()).orElse(null).getDepartement());
+             a = query.getResultList();
+        }
+        Administrator ad=docService.findAdminById( docService.getLoginId()).get();
+        model.addAttribute("admin",ad);
+        String jpql1;
+        if(!docService.findAdminById(docService.getLoginId()).get().getDepartement().equals("All")) {
+            jpql1 = "SELECT d FROM Categorie d WHERE d.Departement = :accept ";
+            TypedQuery<Categorie> query1 = entityManager.createQuery(jpql1,Categorie.class);
+            query1.setParameter("accept", docService.findAdminById(docService.getLoginId()).get().getDepartement());
+            model.addAttribute("categorie",query1.getResultList());
+        }
+        else
+        {
+            jpql1 = "SELECT d FROM Categorie d WHERE d.Departement like :accept1 or d.Departement like :accept2 ";
+            TypedQuery<Categorie> query1 = entityManager.createQuery(jpql1,Categorie.class);
+            query1.setParameter("accept2","Finance");
+            query1.setParameter("accept1", "RH");
+            model.addAttribute("categorie",query1.getResultList());
+        }
+        model.addAttribute("adminDocs", a);
+        return "adminlistadmindoc";
+
+
+    }
+    @GetMapping("/archivisteadmindocfilter")
     public String getFile3(@RequestParam("categorie") String categorie,@RequestParam("filiere") String filiere,Model model) {
         String jpql;
         TypedQuery<AdminDoc> query = null;
@@ -358,7 +512,7 @@ model.addAttribute("adminDocs", adminDocs);
 
             jpql = "SELECT d FROM AdminDoc d WHERE  d.accepted = :accept1";
             query = entityManager.createQuery(jpql,AdminDoc.class);
-            
+
         }
         else if (categorie.equals("All") && (!filiere.equals("All")))
         {
@@ -368,12 +522,12 @@ model.addAttribute("adminDocs", adminDocs);
         }
         else if (!categorie.equals("All") && (filiere.equals("All")))
         {
-            jpql = "SELECT d FROM AdminDoc d WHERE d.categorie like :accept2  and d.accepted = :accept1";
+            jpql = "SELECT d FROM AdminDoc d WHERE d.categorie.id = :accept2  and d.accepted = :accept1";
             query = entityManager.createQuery(jpql,AdminDoc.class);
             query.setParameter("accept2", categorie);
         }
         else {
-            jpql = "SELECT d FROM AdminDoc d WHERE (d.filiere like :accept or d.categorie like :accept2) and d.accepted = :accept1";
+            jpql = "SELECT d FROM AdminDoc d WHERE (d.filiere like :accept or d.categorie.id = :accept2) and d.accepted = :accept1";
             query = entityManager.createQuery(jpql,AdminDoc.class);
             query.setParameter("accept", filiere);
             query.setParameter("accept2", categorie);
@@ -383,6 +537,69 @@ model.addAttribute("adminDocs", adminDocs);
         List<AdminDoc> a = query.getResultList();
         model.addAttribute("adminDocs", a);
         return "listadmindoc";
+
+
+    }
+    @GetMapping("/adminadmindocfilter")
+    public String getFile6(@RequestParam("categorie") String categorie,@RequestParam("filiere") String filiere,Model model) {
+        String jpql;
+        TypedQuery<AdminDoc> query = null;
+        if(categorie.equals("All") && (filiere.equals("All")))
+        {
+
+            return "redirect:/adminlistadmindoc";
+
+        }
+        else if (categorie.equals("All") && (!filiere.equals("All")))
+        {
+            if(docService.findAdminById(docService.getLoginId()).orElse(null).getDepartement().equals("All")) {
+                jpql = "SELECT d FROM AdminDoc d WHERE d.filiere like :accept2  and d.accepted = :accept1";
+                query = entityManager.createQuery(jpql,AdminDoc.class);
+                query.setParameter("accept2", filiere);
+            }
+            else
+            {
+                jpql = "SELECT d FROM AdminDoc d WHERE d.filiere like :accept2  and d.accepted = :accept1 and d.categorie.Departement like :accept3 ";
+                query = entityManager.createQuery(jpql,AdminDoc.class);
+                query.setParameter("accept2", filiere);
+                query.setParameter("accept3", docService.findAdminById(docService.getLoginId()).orElse(null).getDepartement());
+            }
+
+        }
+        else if (!categorie.equals("All") && (filiere.equals("All")))
+        {
+            jpql = "SELECT d FROM AdminDoc d WHERE d.categorie.id = :accept2  and d.accepted = :accept1";
+            query = entityManager.createQuery(jpql,AdminDoc.class);
+            query.setParameter("accept2", categorie);
+        }
+        else {
+            jpql = "SELECT d FROM AdminDoc d WHERE (d.filiere like :accept and d.categorie.id = :accept2) and d.accepted = :accept1";
+            query = entityManager.createQuery(jpql,AdminDoc.class);
+            query.setParameter("accept", filiere);
+            query.setParameter("accept2", categorie);
+        }
+
+        query.setParameter("accept1", 1);
+        List<AdminDoc> a = query.getResultList();
+        model.addAttribute("adminDocs", a);
+        Administrator ad=docService.findAdminById( docService.getLoginId()).get();
+        model.addAttribute("admin",ad);
+        String jpql1;
+        if(!docService.findAdminById(docService.getLoginId()).get().getDepartement().equals("All")) {
+            jpql1 = "SELECT d FROM Categorie d WHERE d.Departement = :accept ";
+            TypedQuery<Categorie> query1 = entityManager.createQuery(jpql1,Categorie.class);
+            query1.setParameter("accept", docService.findAdminById(docService.getLoginId()).get().getDepartement());
+            model.addAttribute("categorie",query1.getResultList());
+        }
+        else
+        {
+            jpql1 = "SELECT d FROM Categorie d WHERE d.Departement like :accept1 or d.Departement like :accept2 ";
+            TypedQuery<Categorie> query1 = entityManager.createQuery(jpql1,Categorie.class);
+            query1.setParameter("accept2","Finance");
+            query1.setParameter("accept1", "RH");
+            model.addAttribute("categorie",query1.getResultList());
+        }
+        return "adminlistadmindoc";
 
 
     }
@@ -402,7 +619,7 @@ model.addAttribute("adminDocs", adminDocs);
 
         String jpql = "SELECT d FROM DocEtud d WHERE (d.filiere like :accept or d.type like :accept) and d.accepted = :accept1";
         TypedQuery<DocEtud> query = entityManager.createQuery(jpql,DocEtud.class);
-        query.setParameter("accept", search);
+        query.setParameter("accept", "%"+search+"%");
         query.setParameter("accept1", 1);
         List<DocEtud> a = query.getResultList();
         model.addAttribute("DocEtud", a);
@@ -510,5 +727,45 @@ model.addAttribute("adminDocs", adminDocs);
 
         return "ModifArchivisteFormulaire";
 
+    }
+    @GetMapping("/admindocdownload/{id}")
+    public ResponseEntity<byte[]> downloadFile(@PathVariable Long id) {
+        Optional<AdminDoc> document = docService.findAdminDocById(id);
+
+        if (document.isPresent()) {
+            AdminDoc adminDoc = document.get();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(org.springframework.http.MediaType.APPLICATION_PDF);
+            headers.setContentDispositionFormData("attachment", "adminDoc"+".pdf");
+            return new ResponseEntity<>(adminDoc.getFile(), headers, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @GetMapping("/etuddocdownload/{id}")
+    public ResponseEntity<byte[]> downloadFile1(@PathVariable Long id) {
+        Optional<DocEtud> document = docService.findDocEtudById(id);
+
+        if (document.isPresent()) {
+            DocEtud adminDoc = document.get();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(org.springframework.http.MediaType.APPLICATION_PDF);
+            headers.setContentDispositionFormData("attachment", "EtudDoc"+".pdf");
+            return new ResponseEntity<>(adminDoc.getFile(), headers, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @GetMapping("/consulteradmindoc/{id}")
+    public String downloadFile1(@PathVariable Long id,Model model) {
+        AdminDoc a=docService.findAdminDocById(id).get();
+        model.addAttribute("adminDoc", a);
+        return "ConsulterAdminDoc";
+    }
+    @GetMapping("/consulterdocetud/{id}")
+    public String downloadFile2(@PathVariable Long id,Model model) {
+        DocEtud a=docService.findDocEtudById(id).get();
+        model.addAttribute("DocEtud", a);
+        return "ConsulterDocEtud";
     }
 }

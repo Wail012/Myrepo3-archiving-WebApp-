@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Administrateurs</title>
+
+    <link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+    <link rel="stylesheet" th:href="@{/css/style.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<!-- Inclusion du fragment navbar -->
+<div th:include="AdminDbaNavbar :: navbarDba"></div>
+
+<div class="container mt-4">
+    <h2>Liste des Administrateurs</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="etudiant : ${etudiants}">
+            <td th:text="${etudiant.id}"></td>
+            <td th:text="${etudiant.nom}"></td>
+            <td th:text="${etudiant.prenom}"></td>
+            <td th:text="${etudiant.email}"></td>
+
+            <td>
+                <a class="btn btn-primary btn-sm" th:href="@{'/modifadmin/' + ${etudiant.id}}">Modifier</a>
+                <a class="btn btn-danger btn-sm" th:href="@{'/suppadmin/' + ${etudiant.id}}">Supprimer</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div th:include="footer:: footer"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>
