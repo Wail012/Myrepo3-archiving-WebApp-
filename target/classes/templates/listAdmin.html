@@ -22,6 +22,7 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Email</th>
+            <th>Departement</th>
 
         </tr>
         </thead>
@@ -31,6 +32,7 @@
             <td th:text="${etudiant.nom}"></td>
             <td th:text="${etudiant.prenom}"></td>
             <td th:text="${etudiant.email}"></td>
+            <td th:text="${etudiant.departement}"></td>
 
             <td>
                 <a class="btn btn-primary btn-sm" th:href="@{'/modifadmin/' + ${etudiant.id}}">Modifier</a>

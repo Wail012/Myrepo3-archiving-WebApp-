@@ -41,11 +41,10 @@
             <label for="filterStatus">Categorie:</label>
             <select class="form-control" id="filterStatus" name="categorie">
                 <option value="All">All</option>
-                <option value="Deliberation Conseil ecole">Deliberation Conseil ecole</option>
-                <option value="Deliberation instance Pedagogique">Deliberation instance Pedagogique</option>
-                <option value="Document d'inventaire">Document d'inventaire</option>
-                <option value="Document de sante">Document de sante</option>
-                <option value="Document convention stage">Document convention stage</option>
+                <option th:each="etudiant : ${categorie}"
+                        th:value="${etudiant.getId()}"
+                        th:text="${etudiant.getTitrecategorie()}">
+                </option>
 
 
             </select>
@@ -79,6 +78,8 @@
             <td>
                 <a th:href="@{/consulteradmindoc/{id}(id=${adminDoc.id})}" class="btn btn-info">Consulter</a>
                 <a th:href="@{/admindocdownload/{id}(id=${adminDoc.id})}" class="btn btn-success">Download</a>
+                <a th:href="@{/admindocdelete/{id}(id=${adminDoc.id})}" class="btn btn-danger">Supprimer</a>
+                <a th:href="@{/admindocmodify/{id}(id=${adminDoc.id})}" class="btn btn-info">Modifier</a>
             </td>
         </tr>
         </tbody>

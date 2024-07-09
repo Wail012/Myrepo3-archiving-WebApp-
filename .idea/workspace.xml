@@ -5,30 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="413fe4e4-dc93-41c0-bbd6-13925f68d319" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/GlobalSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/GlobalSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/EtudiantNavbar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Login1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/WelcomeStudent.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/adminlistdocetud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/adminprofil.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/archivprofil.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/dbaprofil.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/modifyadmindoc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/modifydocetud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/studentlistdocetud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/studentprofil.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/99c2138b-9a97-49cb-95d0-c8c090247650.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/99c2138b-9a97-49cb-95d0-c8c090247650.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Service/DocService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Service/DocService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DemoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/AdminDoc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/AdminDoc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Administrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Administrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Categorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Categorie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/CategorieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/CategorieRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/AdminDba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/AdminDba.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/AdminDbaNavbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/AdminDbaNavbar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/AdminNavbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/AdminNavbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/AjoutAdminFormulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/AjoutAdminFormulaire.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ArchivisteNavbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ArchivisteNavbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ConsulterAdminDoc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ConsulterAdminDoc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ConsulterDocEtud.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ConsulterDocEtud.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/DetailSubmitedAdminDoc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/DetailSubmitedAdminDoc.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/DetailSubmitedDocEtud.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/DetailSubmitedDocEtud.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ModifAdminFormulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ModifAdminFormulaire.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/SubmitDocEtudFormulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/SubmitDocEtudFormulaire.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/SubmitDocFormulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/SubmitDocFormulaire.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminlistadmindoc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminlistadmindoc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ModifEtudFormulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ModifEtudFormulaire.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/WelcomeAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/WelcomeAdmin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/WelcomeAdminDba.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/WelcomeAdminDba.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/WelcomeArchiviste.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/WelcomeArchiviste.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/docstudentsubmited.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/docstudentsubmited.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/docsubmited.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/docsubmited.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/listAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/listAdmin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/listadmindoc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/listadmindoc.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/listdocetud.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/listdocetud.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mysubmitions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mysubmitions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/DemoApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/DemoApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Service/DocService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Service/DocService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/DemoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/DemoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/AdminDba.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/AdminDba.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/AdminDbaNavbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/AdminDbaNavbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/AdminNavbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/AdminNavbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/ArchivisteNavbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/ArchivisteNavbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/DetailSubmitedAdminDoc.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/DetailSubmitedAdminDoc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/DetailSubmitedDocEtud.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/DetailSubmitedDocEtud.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/ModifEtudFormulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/ModifEtudFormulaire.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/docstudentsubmited.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/docstudentsubmited.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/docsubmited.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/docsubmited.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/listAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/listAdmin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/listadmindoc.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/listadmindoc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/listdocetud.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/listdocetud.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.demo.DemoApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.demo.DemoApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.demo.DemoApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.example.demo.DemoApplicationTests.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +73,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -75,13 +109,13 @@
     &quot;Spring Boot.DemoApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Desktop/demo/src/main/resources/templates&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ghtgu/Desktop/demo/Myrepo3/src/main/resources/templates&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -92,6 +126,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ghtgu\Desktop\demo\Myrepo3\src\main\resources\templates" />
       <recent name="C:\Users\Admin\Desktop\demo\src\main\resources\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -116,8 +151,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -144,6 +179,12 @@
       <workItem from="1720190916074" duration="26552000" />
       <workItem from="1720302530429" duration="79000" />
       <workItem from="1720302989294" duration="712000" />
+      <workItem from="1720334186554" duration="266000" />
+      <workItem from="1720334461400" duration="1030000" />
+      <workItem from="1720366734623" duration="6862000" />
+      <workItem from="1720387898275" duration="1771000" />
+      <workItem from="1720474207195" duration="21878000" />
+      <workItem from="1720518780947" duration="668000" />
     </task>
     <servers />
   </component>

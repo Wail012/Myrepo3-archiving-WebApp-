@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+    <link rel="stylesheet" th:href="@{/css/style.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<!-- Navbar Fragment -->
+<div th:fragment="navbarDba">
+    <div class="probootstrap-header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-9 probootstrap-top-quick-contact-info">
+                    <span><i class="icon-location2"></i> Brooklyn, NY 10036, United States</span>
+                    <span><i class="icon-phone2"></i> +1-123-456-7890</span>
+                    <span><i class="icon-mail"></i> info@probootstrap.com</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 probootstrap-top-social">
+                    <ul>
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                        <li><a href="#"><i class="icon-instagram2"></i></a></li>
+                        <li><a href="#"><i class="icon-youtube"></i></a></li>
+                        <li><a href="#" class="probootstrap-search-icon js-probootstrap-search"><i class="icon-search"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default probootstrap-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="btn-more js-btn-more visible-xs">
+                    <a href="#"><i class="icon-dots-three-vertical"></i></a>
+                </div>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+
+
+            </div>
+            <div id="navbar-collapse" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><img th:src="@{/img/logo.png}" alt="Mon Application" style="height: 85px; margin-top: 1px;margin-right: 120px"></li>
+                    <li class="active"><a th:href="@{/}">Accueil</a></li>
+                    <li><a th:href="@{/studentprofil}">Profil</a></li>
+                    <li><a th:href="@{/etudlistdoc}">Documents</a></li>
+
+                    <li><a th:href="@{/}">Se déconnecter</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -35,6 +35,14 @@
             <th>Annee Realisation</th>
             <td th:text="${DocEtud.anneeRealisation}"></td>
         </tr>
+        <tr>
+            <th>Etudiant</th>
+            <td th:text="${DocEtud.etudiant.getNom()}+' '+${DocEtud.etudiant.getPrenom()}"></td>
+        </tr>
+        <tr>
+            <th>Administrateur</th>
+            <td th:text="${DocEtud.admin.getNom()}+' '+${DocEtud.admin.getPrenom()}"></td>
+        </tr>
 
 
         </tbody>

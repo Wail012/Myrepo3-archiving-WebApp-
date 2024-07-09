@@ -29,7 +29,7 @@
             <td th:text="${doc.filiere}"></td>
             <td th:text="${doc.anneeEtud}"></td>
             <td th:text="${doc.dateCreation}"></td>
-            <td th:text="${doc.admin.getNom()}+''+${doc.admin.getPrenom()}"></td>
+            <td th:text="${doc.admin.getNom()}+' '+${doc.admin.getPrenom()}"></td>
             <td>
                 <a class="btn btn-info" th:href="@{/detailadmindocsubmited/{id}(id=${doc.id})}">Details</a>
             </td>

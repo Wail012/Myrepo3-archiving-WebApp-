@@ -52,7 +52,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><img th:src="@{/img/logo.png}" alt="Mon Application" style="height: 85px; margin-top: 1px;margin-right: 120px"></li>
                     <li class="active"><a th:href="@{/}">Accueil</a></li>
-                    <li><a th:href="@{/profil}">Profil</a></li>
+                    <li><a th:href="@{/adminprofil}">Profil</a></li>
                     <li><a th:href="@{/mysubmitions}">My submitions</a></li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Soumettre Document</a>
@@ -72,7 +72,7 @@
                                 <a th:href="@{/adminlistadmindoc}">Document Administratif</a>
                             </li>
                             <li th:if="${admin.getDepartement() == 'Etudiant' or admin.getDepartement() == 'All'}">
-                                <a th:href="@{/submitdocetud}">Document Etudiant</a>
+                                <a th:href="@{/adminlistdocetud}">Document Etudiant</a>
                             </li>
                         </ul>
                     </li>

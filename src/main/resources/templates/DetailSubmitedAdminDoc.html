@@ -35,7 +35,10 @@
             <th>Annee Etude</th>
             <td th:text="${adminDoc.anneeEtud}"></td>
         </tr>
-
+        <tr>
+            <th>Administrateur</th>
+            <td th:text="${adminDoc.admin.getNom()}+' '+${adminDoc.admin.getPrenom()}"></td>
+        </tr>
 
         </tbody>
     </table>

@@ -14,6 +14,13 @@ public class AdminDba {
     Long id;
     String password;
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     // Getters and Setters
     public Long getId() {

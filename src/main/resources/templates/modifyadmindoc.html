@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter Document Administratif</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+    <link rel="stylesheet" th:href="@{/css/style.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<!-- Inclusion du fragment navbar -->
+<div th:include="ArchivisteNavbar :: navbarDba"></div>
+
+
+<div class="container mt-4">
+    <h2>Modifier Document Administratif</h2>
+    <form th:action="@{/admindocmodify}" method="post" enctype="multipart/form-data">
+        <input type="hidden" class="form-control" id="id" name="id" th:value="${doc.getId()}" required>
+        <div class="form-group">
+
+            <label for="categorie">Catégorie:</label>
+            <select class="form-control" id="categorie" name="categorie">
+
+                <option th:each="etudiant : ${categorie}"
+                        th:value="${etudiant.getId()}"
+                        th:text="${etudiant.getTitrecategorie()}">
+                </option>
+
+
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dateCreation">Date de Création:</label>
+            <input type="date" class="form-control" id="dateCreation" name="dateCreation" th:value="${doc.getDateCreation()}" required>
+        </div>
+        <div class="form-group">
+            <label for="filiere">Filière:</label>
+            <select class="form-control" id="filiere" name="filiere">
+                <option value="All">All</option>
+                <option value="math">math</option>
+                <option value="genie civil">genie civil</option>
+                <option value="genie industriel">genie industriel</option>
+                <option value="ifa">ifa</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="anneeEtud">Année d'Études:</label>
+            <input type="number" class="form-control" id="anneeEtud" name="anneeEtud" th:value="${doc.getAnneeEtud()}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="file">Document:</label>
+            <input type="file" class="form-control" id="file" name="file" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>
+
+<div th:replace="footer :: footer"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -41,7 +41,14 @@
         </div>
         <div class="form-group">
             <label for="filiere">Filière:</label>
-            <input type="text" class="form-control" id="filiere" name="filiere" th:value="${etudiant.filiere}" required>
+
+            <select class="form-control" id="filiere" name="filiere">
+
+                <option value="math">math</option>
+                <option value="genie civil">genie civil</option>
+                <option value="genie industriel">genie industriel</option>
+                <option value="ifa">ifa</option>
+            </select> required>
         </div>
         <div class="form-group">
             <label for="AccessLevelAnnee">Niveau d'accès année:</label>

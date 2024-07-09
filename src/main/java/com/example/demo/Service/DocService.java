@@ -7,8 +7,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +40,22 @@ public class DocService {
     @Autowired
     private CategorieRepository categorieRepository;
 
+    @Scheduled(cron = "0 * * * * ?") // Runs every day at midnight
+    @Transactional
+    public void deleteExpiredDocuments() {
+        LocalDate today = LocalDate.now();
+
+        String jpql = "SELECT d FROM AdminDoc d WHERE d.dateSupp = :accept and d.accepted = :accept1";
+        TypedQuery<AdminDoc> query = entityManager.createQuery(jpql, AdminDoc.class);
+        query.setParameter("accept", today);
+        query.setParameter("accept1", 1);
+        String jpql1 = "SELECT d FROM DocEtud d WHERE d.DateSupp  = :accept and d.accepted = :accept1";
+        TypedQuery<DocEtud> query1 = entityManager.createQuery(jpql1, DocEtud.class);
+        query1.setParameter("accept", today);
+        query1.setParameter("accept1", 1);
+        admindocRepository.deleteAll(query.getResultList());
+        docEtudRepository.deleteAll(query1.getResultList());
+    }
 
     public void setLoggedInUser(Long userId, int role) {
         this.loginId = userId;
@@ -171,6 +190,14 @@ public class DocService {
 
     public void suppEtud( Long id) {
         etudiantRepository.deleteById(id);
+
+    }
+    public void suppDocEtud( Long id) {
+        docEtudRepository.deleteById(id);
+
+    }
+    public void suppAdminDoc( Long id) {
+        admindocRepository.deleteById(id);
 
     }
     public void suppAdmin( Long id) {
